@@ -50,6 +50,10 @@ export default class Main extends Component {
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={this.clearAllNotes.bind(this)} style={styles.clearAllButton}>
+          <Text style={styles.clearAllText}>Clear all</Text>
+        </TouchableOpacity>
+
       </View>
     );
   }
@@ -69,9 +73,17 @@ export default class Main extends Component {
     }
   }
 
+  clearAllNotes() {
+    this.setState({ noteArray: [] })
+  }
+
   deleteNote(key) {
     this.state.noteArray.splice(key, 1);
     this.setState({ noteArray: this.state.noteArray })
+  }
+
+  editNote(key) {
+    
   }
 
 }
@@ -124,8 +136,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 8,
   },
+  clearAllButton: {
+    position: 'absolute',
+    zIndex: 11,
+    right: 130,
+    bottom: 90,
+    backgroundColor: '#E91E63',
+    width: 90,
+    height: 90,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 8,
+  },
   addButtonText: {
     color: '#fff',
     fontSize: 24,
+  },
+  clearAllText: {
+    fontSize: 18,
   }
 });
