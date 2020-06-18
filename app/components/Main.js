@@ -20,7 +20,13 @@ export default class Main extends Component {
   render() {
 
     let notes = this.state.noteArray.map((val, key) => {
-      return <Note key={key} keyval={key} val={val} deleteMethod={ () => this.deleteNote(key) } />
+      return <Note 
+              key={key} 
+              keyval={key} 
+              val={val} 
+              deleteMethod={ () => this.deleteNote(key) }
+              editMethod={ () => this.editNote(key) }
+              />
     });
 
     return (
@@ -41,7 +47,6 @@ export default class Main extends Component {
             placeholder='>note'
             placeholderTextColor='white'
             underlineColorAndroid='transparent'>
-
             </TextInput>
 
         </View>
@@ -77,13 +82,13 @@ export default class Main extends Component {
     this.setState({ noteArray: [] })
   }
 
-  deleteNote(key) {
+  deleteNote(key) {  
     this.state.noteArray.splice(key, 1);
     this.setState({ noteArray: this.state.noteArray })
   }
 
   editNote(key) {
-    
+      alert("hi")
   }
 
 }
